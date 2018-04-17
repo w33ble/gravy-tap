@@ -1,3 +1,84 @@
-export default function() {
-  // es6 module code goes here
+import dotenv from 'dotenv';
+import createRunner from 'horsey-sauce';
+import tap from 'simple-tap-parser';
+
+function parseTap(output) {
+  const parser = new tap.Parser(output);
+
+  const stats = {
+    output,
+    tests: parser.getTestCount(),
+    passed: parser.getValidCount(),
+    failed: parser.getFailedCount(),
+    errors: [],
+  };
+
+  // no failures, return the stats
+  if (stats.failed > 0) {
+    stats.errors = parser.tests.filter(t => !t.isValid());
+  }
+
+  return stats;
+}
+
+function getSauceCredentials(sauce) {
+  if (sauce) {
+    const { user: SAUCE_USER, key: SAUCE_KEY } = sauce;
+    return { SAUCE_USER, SAUCE_KEY };
+  }
+
+  const { SAUCE_USER, SAUCE_KEY } = process.env;
+  return { SAUCE_USER, SAUCE_KEY };
+}
+
+function validateSauceCredentials(SAUCE_USER, SAUCE_KEY) {
+  // check that the sauce credentials are defined
+  if (!SAUCE_USER || !SAUCE_KEY) {
+    const errMessage = `You must include your sauce credentials. Do one of the following:
+
+  - Pass in sauce.user and sauce.key as options
+  - Set SAUCE_USER and SAUCE_KEY environment variables
+  - Add SAUCE_USER and SAUCE_KEY to a .env file at the root`;
+
+    throw new Error(errMessage);
+  }
+}
+
+export default function gravyTap(src, { capabilities, sauce } = {}) {
+  dotenv.config();
+
+  const { SAUCE_USER, SAUCE_KEY } = getSauceCredentials(sauce);
+  validateSauceCredentials(SAUCE_USER, SAUCE_KEY);
+
+  function browserRunner(browser, helpers, cb) {
+    helpers.getUncaughtErrors((err, errors) => {
+      // pass failure along
+      if (err) {
+        cb(err);
+        return;
+      }
+
+      // if there were uncaught errors, fail
+      if (errors) {
+        cb(new Error(errors));
+        return;
+      }
+
+      // return console output
+      helpers.getConsoleOutput(cb);
+    });
+  }
+
+  const runner = createRunner(SAUCE_USER, SAUCE_KEY);
+
+  return runner
+    .run(src, browserRunner, capabilities)
+    .then(output => {
+      const stats = parseTap(output);
+      return runner.close().then(() => stats);
+    })
+    .catch(err => {
+      runner.close();
+      throw err;
+    });
 }
