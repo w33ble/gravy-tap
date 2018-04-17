@@ -6,6 +6,7 @@
   "module": "index.mjs",
   "scripts": {
     "lint": "eslint \"*.{js,mjs}\" \"src/**/*.{js,mjs}\"",
+    "test:output": "node -r esm test/parse_output.mjs",
     "start": "node ."
   },
   "repository": {
