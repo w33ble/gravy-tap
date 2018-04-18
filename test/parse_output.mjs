@@ -38,14 +38,14 @@ const src = output
 
 gravyTap(src)
   .then(results => {
-    assert.equal(results.tests, 3, '3 test results');
-    assert.equal(results.passed, 2, '2 tests passed');
-    assert.equal(results.failed, 1, '1 test failed');
+    assert.strictEqual(results.tests, 3, '3 test results');
+    assert.strictEqual(results.passed, 2, '2 tests passed');
+    assert.strictEqual(results.failed, 1, '1 test failed');
     assert.ok(Array.isArray(results.errors), 'errors property is an array');
-    assert.equal(results.errors.length, 1, 'errors array has 1 failure');
-    assert.equal(results.errors[0].line, 'not ok 1 passes', 'has the failing line');
-    assert.equal(results.errors[0].details, `${errorDetails}\n`, 'has the failing details');
-    assert.equal(results.output, output, 'output includes full console results');
+    assert.strictEqual(results.errors.length, 1, 'errors array has 1 failure');
+    assert.strictEqual(results.errors[0].line, 'not ok 1 passes', 'has the failing line');
+    assert.strictEqual(results.errors[0].details, `${errorDetails}\n`, 'has the failing details');
+    assert.strictEqual(results.output, output, 'output includes full console results');
     console.log('Output assertions passed');
   })
   .catch(err => {

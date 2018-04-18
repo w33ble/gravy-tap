@@ -27,9 +27,9 @@ Object.keys(specs)
           // throw is rejection was expected
           if (spec.rejects) throw new Error('Runner was expected to reject');
 
-          assert.equal(results.tests, spec.total, `${spec.total} total tests`);
-          assert.equal(results.passed, spec.pass, `${spec.pass} tests pass`);
-          assert.equal(results.failed, spec.fail, `${spec.fail} tests fail`);
+          assert.strictEqual(results.tests, spec.total, `${spec.total} total tests`);
+          assert.strictEqual(results.passed, spec.pass, `${spec.pass} tests pass`);
+          assert.strictEqual(results.failed, spec.fail, `${spec.fail} tests fail`);
           console.log(`${browser} - assertions passed`);
         })
         .catch(err => {
