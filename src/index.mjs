@@ -49,8 +49,10 @@ function validateSauceCredentials(SAUCE_USER, SAUCE_KEY) {
   }
 }
 
-export default function gravyTap(src, { capabilities, sauce } = {}) {
+export default function gravyTap(src, options = {}) {
   dotenv.config();
+
+  const { capabilities, sauce, rejectOnErrors = true } = options;
 
   const { SAUCE_USER, SAUCE_KEY } = getSauceCredentials(sauce);
   validateSauceCredentials(SAUCE_USER, SAUCE_KEY);
@@ -64,7 +66,7 @@ export default function gravyTap(src, { capabilities, sauce } = {}) {
       }
 
       // if there were uncaught errors, fail
-      if (errors) {
+      if (rejectOnErrors && errors) {
         cb(new Error(errors));
         return;
       }
