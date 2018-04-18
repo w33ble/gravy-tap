@@ -8,6 +8,7 @@
     "lint": "eslint \"*.{js,mjs}\" \"src/**/*.{js,mjs}\"",
     "test:output": "node -r esm test/parse_output.mjs",
     "test:runner": "rollup -c .rollup.test.js && node -r esm test/parse_test_output.mjs",
+    "version": "auto-changelog -p && git add CHANGELOG.md",
     "start": "node ."
   },
   "repository": {
@@ -39,6 +40,12 @@
   "esm": {
     "cjs": true
   },
+  "auto-changelog": {
+    "output": "CHANGELOG.md",
+    "template": ".changelog_template.hbs",
+    "ignoreCommitPattern": "(chore|test):",
+    "commitLimit": false
+  },
   "dependencies": {
     "dotenv": "^5.0.1",
     "esm": "^3.0.17",
@@ -46,6 +53,7 @@
     "simple-tap-parser": "^0.0.4"
   },
   "devDependencies": {
+    "auto-changelog": "^1.4.6",
     "eslint": "^4.9.0",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-config-prettier": "^2.9.0",
