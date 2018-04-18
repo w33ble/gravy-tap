@@ -5,8 +5,8 @@ import resolve from 'rollup-plugin-node-resolve';
 import buble from 'rollup-plugin-buble';
 
 export default {
-  entry: 'test/tape.mjs',
-  targets: [{ format: 'umd', dest: 'test/bundle.js' }],
+  input: 'test/tape.mjs',
+  output: [{ format: 'umd', file: 'test/bundle.js' }],
   plugins: [
     commonjs({ include: 'node_modules/**' }),
     globals(),
