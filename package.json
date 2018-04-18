@@ -8,6 +8,7 @@
     "lint": "eslint \"*.{js,mjs}\" \"src/**/*.{js,mjs}\"",
     "test:output": "node -r esm test/parse_output.mjs",
     "test:runner": "rollup -c .rollup.test.js && node -r esm test/parse_test_output.mjs",
+    "test": "npm run lint && npm run test:output && npm run test:runner",
     "version": "auto-changelog -p && git add CHANGELOG.md",
     "start": "node ."
   },

@@ -20,8 +20,7 @@ branches:
     - /^v[0-9].*$/
 
 script:
-  - npm run test:output
-  - npm run test:runner
+  - npm run test
 
 env:
   global:
