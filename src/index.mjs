@@ -13,9 +13,14 @@ function parseTap(output) {
     errors: [],
   };
 
-  // no failures, return the stats
+  // failures, add them to the errors array
   if (stats.failed > 0) {
-    stats.errors = parser.tests.filter(t => !t.isValid());
+    stats.errors = parser.tests.reduce((acc, t) => {
+      // filter valid results, map line value on invalid results
+      if (t.isValid()) return acc;
+      const { line, details } = t;
+      return acc.concat({ details, line: line.string });
+    }, []);
   }
 
   return stats;
