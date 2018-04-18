@@ -2,6 +2,7 @@ language: node_js
 
 node_js:
   - "stable"
+  - "8"
   - "6"
 
 cache:
@@ -18,3 +19,6 @@ branches:
     - master
     - /^v[0-9].*$/
 
+script:
+  - test:output
+  - test:runner
