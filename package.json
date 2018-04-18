@@ -7,6 +7,7 @@
   "scripts": {
     "lint": "eslint \"*.{js,mjs}\" \"src/**/*.{js,mjs}\"",
     "test:output": "node -r esm test/parse_output.mjs",
+    "test:runner": "rollup -c .rollup.test.js && node -r esm test/parse_test_output.mjs",
     "start": "node ."
   },
   "repository": {
@@ -54,6 +55,13 @@
     "eslint-plugin-react": "^7.1.0",
     "husky": "^0.14.3",
     "lint-staged": "^7.0.4",
-    "prettier": "^1.9.0"
+    "prettier": "^1.9.0",
+    "rollup": "^0.58.0",
+    "rollup-plugin-buble": "^0.19.2",
+    "rollup-plugin-commonjs": "^9.1.0",
+    "rollup-plugin-node-builtins": "^2.1.2",
+    "rollup-plugin-node-globals": "^1.2.0",
+    "rollup-plugin-node-resolve": "^3.3.0",
+    "tape": "^4.9.0"
   }
 }
