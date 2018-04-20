@@ -10,6 +10,7 @@
     "test:runner": "rollup -c .rollup.test.js && node -r esm test/parse_test_output.mjs",
     "test": "npm run lint && npm run test:output && npm run test:runner",
     "version": "auto-changelog -p && git add CHANGELOG.md",
+    "precommit": "lint-staged",
     "start": "node ."
   },
   "repository": {
@@ -29,9 +30,8 @@
   },
   "homepage": "https://github.com/w33ble/gravy-tap",
   "lint-staged": {
-    "*.{js,mjs,json,css}": [
-      "prettier --write"
-    ]
+    "*.{js,mjs}": ["eslint --fix"],
+    "*.{js,mjs,json,css}": ["prettier --write"]
   },
   "prettier": {
     "printWidth": 100,
