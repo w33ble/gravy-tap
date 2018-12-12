@@ -51,9 +51,9 @@
     "cjs": true
   },
   "dependencies": {
-    "dotenv": "^6.0.0",
-    "esm": "^3.0.17",
-    "horsey-sauce": "^0.1.0",
+    "dotenv": "^6.2.0",
+    "esm": "^3.0.84",
+    "horsey-sauce": "^0.1.2",
     "simple-tap-parser": "^0.0.4"
   },
   "devDependencies": {
