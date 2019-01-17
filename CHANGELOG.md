@@ -1,5 +1,7 @@
 ### Changelog
 
+#### [v0.1.2](https://github.com/w33ble/gravy-tap/compare/v0.1.1...v0.1.2) (17 January 2019)
+
 #### [v0.1.1](https://github.com/w33ble/gravy-tap/compare/v0.1.0...v0.1.1) (12 December 2018)
 
 #### v0.1.0 (18 April 2018)
