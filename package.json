@@ -1,6 +1,6 @@
 {
   "name": "gravy-tap",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Tap runner for Sauce Labs",
   "main": "index",
   "module": "index.mjs",
