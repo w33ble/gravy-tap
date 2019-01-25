@@ -2,8 +2,8 @@
   "name": "gravy-tap",
   "version": "0.1.3",
   "description": "Tap runner for Sauce Labs",
-  "main": "index",
-  "module": "index.mjs",
+  "main": "dist/index.js",
+  "module": "src/index.mjs",
   "scripts": {
     "lint": "eslint \"*.{js,mjs}\" \"src/**/*.{js,mjs}\"",
     "test:output": "node -r esm test/parse_output.mjs",
@@ -20,6 +20,7 @@
   "keywords": [],
   "files": [
     "src/",
+    "dist/",
     "index.js",
     "index.mjs"
   ],
