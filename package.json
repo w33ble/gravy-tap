@@ -22,8 +22,9 @@
   "files": [
     "src/",
     "dist/",
-    "index.js",
-    "index.mjs"
+    "README.md",
+    "CHANGELOG.md",
+    "AUTHORS.md"
   ],
   "author": "Joe Fleming (https://github.com/w33ble)",
   "license": "MIT",
