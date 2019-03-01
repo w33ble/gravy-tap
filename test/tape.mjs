@@ -1,4 +1,4 @@
-import test from 'tape';
+import test from 'tape-rollup';
 
 test('should pass', t => {
   t.plan(1);

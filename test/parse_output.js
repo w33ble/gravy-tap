@@ -1,5 +1,6 @@
-import assert from 'assert';
-import gravyTap from '..';
+/* eslint no-console: 0 */
+const assert = require('assert');
+const gravyTap = require('..');
 
 const errorDetails = `  ---
   operator: fail

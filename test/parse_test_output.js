@@ -1,11 +1,13 @@
 /* eslint no-console: 0 */
-import fs from 'fs';
-import path from 'path';
-import assert from 'assert';
-import gravyTap from '..';
+const fs = require('fs');
+const path = require('path');
+const assert = require('assert');
+const gravyTap = require('..');
 
-const src = fs.readFileSync(path.resolve(process.cwd(), 'test/bundle.js')).toString();
+const testBundle = 'test/bundle.js';
+const src = fs.readFileSync(path.resolve(process.cwd(), testBundle)).toString();
 
+// describes expected output, keyed by browser
 const specs = {
   chrome: {
     total: 3,
