@@ -2,16 +2,17 @@
   "name": "gravy-tap",
   "version": "0.1.3",
   "description": "Tap runner for Sauce Labs",
-  "main": "index",
-  "module": "index.mjs",
+  "main": "dist/index.js",
+  "module": "src/index.mjs",
   "scripts": {
     "lint": "eslint \"*.{js,mjs}\" \"src/**/*.{js,mjs}\"",
+    "pretest": "npm run build",
     "test:output": "node -r esm test/parse_output.mjs",
     "test:runner": "rollup -c .rollup.test.js && node -r esm test/parse_test_output.mjs",
     "test": "npm run lint && npm run test:output && npm run test:runner",
     "version": "npm-auto-version",
     "precommit": "lint-staged",
-    "start": "node ."
+    "build": "modconv src/index.mjs -d dist --silent"
   },
   "repository": {
     "type": "git",
@@ -20,8 +21,10 @@
   "keywords": [],
   "files": [
     "src/",
-    "index.js",
-    "index.mjs"
+    "dist/",
+    "README.md",
+    "CHANGELOG.md",
+    "AUTHORS.md"
   ],
   "author": "Joe Fleming (https://github.com/w33ble)",
   "license": "MIT",
@@ -52,7 +55,6 @@
   },
   "dependencies": {
     "dotenv": "^6.2.0",
-    "esm": "^3.1.0",
     "horsey-sauce": "^0.1.2",
     "simple-tap-parser": "^0.0.4"
   },
@@ -65,8 +67,10 @@
     "eslint-plugin-jsx-a11y": "^6.0.2",
     "eslint-plugin-prettier": "^2.3.1",
     "eslint-plugin-react": "^7.1.0",
+    "esm": "^3.2.5",
     "husky": "^0.14.3",
     "lint-staged": "^7.0.4",
+    "modconv": "^0.1.2",
     "prettier": "^1.9.0",
     "rollup": "^0.58.0",
     "rollup-plugin-buble": "^0.19.2",
