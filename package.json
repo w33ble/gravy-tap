@@ -59,7 +59,7 @@
   },
   "dependencies": {
     "dotenv": "^6.2.0",
-    "horsey-sauce": "^0.1.2",
+    "horsey-sauce": "^0.2.0",
     "simple-tap-parser": "^0.0.4"
   },
   "devDependencies": {

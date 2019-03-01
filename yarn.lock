@@ -839,12 +839,10 @@ callsites@^2.0.0:
   resolved "https://registry.yarnpkg.com/callsites/-/callsites-2.0.0.tgz#06eb84f00eea413da86affefacbffb36093b3c50"
   integrity sha1-BuuE8A7qQT2oav/vrL/7Ngk7PFA=
 
-carafe@^0.3.0:
-  version "0.3.2"
-  resolved "https://registry.yarnpkg.com/carafe/-/carafe-0.3.2.tgz#ce555968879531b173a749fb1fc5e1d1ce6e5158"
-  integrity sha512-8hoPjH1VarDAvrIoXD/PIMlLNKSjgg16uf6sgFFxYniT/FDLC4DhpqyTkBzAyd675AKdcbjU2zwVWUCkn6iS6Q==
-  dependencies:
-    esm "^3.1.0"
+carafe@^0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/carafe/-/carafe-0.5.0.tgz#4ade748bd383612133406adc20c9c57b8bfce288"
+  integrity sha512-ZszY5BiQDhcOpbqYhDqzDxvdvwZK24OtRPZgFjzCv0O4hTMu5OEh1T82j+lkidvTdFvY54HBX+UXgl1LIEqM9Q==
 
 caseless@~0.12.0:
   version "0.12.0"
@@ -1564,12 +1562,7 @@ eslint@^4.9.0:
     table "4.0.2"
     text-table "~0.2.0"
 
-esm@3.0.22:
-  version "3.0.22"
-  resolved "https://registry.yarnpkg.com/esm/-/esm-3.0.22.tgz#1e10b620869ed107aa230af1b7c28e5268be67e2"
-  integrity sha512-T8CopfDAb9988faVAb2fkyiPtWAJjoXHqXu8z6jr3BUQZIdqTsWl3Z6VP3UQ9TVsAfxiwI62dEBjKmx6wBUswQ==
-
-esm@^3.1.0, esm@^3.2.5:
+esm@^3.2.5:
   version "3.2.7"
   resolved "https://registry.yarnpkg.com/esm/-/esm-3.2.7.tgz#5fcb7649cce55323bce9ac02496e89339df86f9f"
   integrity sha512-zsyD5gO8CY9dpK3IrdC4WHtvtHGXEFOpYA4zB+6p+Kygf3vv/6kF3YMEQLOArwKPPNvKt8gjI8UYhQW8bXM/YQ==
@@ -2115,13 +2108,12 @@ hmac-drbg@^1.0.0:
     minimalistic-assert "^1.0.0"
     minimalistic-crypto-utils "^1.0.1"
 
-horsey-sauce@^0.1.2:
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/horsey-sauce/-/horsey-sauce-0.1.2.tgz#1ce5af9c4ce67974df404b89bef3efc54595ce4b"
-  integrity sha512-WMAX1Vp09QFA4YQXNIZMHzU/sL4JWhB+cWYVHWfDYMOM1wDgZ+gPPCIHQjimZA7HR70MEHxnFwa/Qazk9ICSrA==
+horsey-sauce@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/horsey-sauce/-/horsey-sauce-0.2.0.tgz#7a44afd12a3834d563288659f24b7ae7f3fbf805"
+  integrity sha512-0HzFXrX5ZSpl3sVriSk3ANz600NCAvjQLDWqqkN6nNICUQktlO5w1PrlnLuIGrrI/my+Ol3dzA9gYhwdqOdUEQ==
   dependencies:
-    carafe "^0.3.0"
-    esm "3.0.22"
+    carafe "^0.5.0"
     sauce-connect-launcher "^1.2.4"
     wadsworth "^0.2.0"
     wd "^1.11.1"
