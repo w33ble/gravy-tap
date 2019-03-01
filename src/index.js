@@ -1,6 +1,6 @@
-import dotenv from 'dotenv';
-import createRunner from 'horsey-sauce';
-import tap from 'simple-tap-parser';
+const dotenv = require('dotenv');
+const createRunner = require('horsey-sauce');
+const tap = require('simple-tap-parser');
 
 function parseTap(output) {
   const parser = new tap.Parser(output);
@@ -49,7 +49,7 @@ function validateSauceCredentials(SAUCE_USER, SAUCE_KEY) {
   }
 }
 
-export default function gravyTap(src, options = {}) {
+function gravyTap(src, options = {}) {
   dotenv.config();
 
   const { capabilities, sauce, rejectOnErrors = true } = options;
@@ -89,3 +89,5 @@ export default function gravyTap(src, options = {}) {
       throw err;
     });
 }
+
+module.exports = gravyTap;
