@@ -16,6 +16,11 @@ test('should throw', t => {
   );
 });
 
+test('expected test failure', t => {
+  t.plan(1);
+  t.fail('yup, it failed');
+});
+
 test('object.assign', t => {
   t.plan(1);
   const obj = { one: 1 };

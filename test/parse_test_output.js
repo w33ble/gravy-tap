@@ -16,9 +16,9 @@ const src = fs.readFileSync(path.resolve(process.cwd(), testBundle)).toString();
 // describes expected output, keyed by browser
 const specs = {
   chrome: {
-    total: 3,
+    total: 4,
     pass: 3,
-    fail: 0,
+    fail: 1,
   },
   'internet explorer': {
     rejects: /Object.+assign/,
