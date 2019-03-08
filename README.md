@@ -42,7 +42,7 @@ gravyTap(src)
 `gravyTap` also takes a second parameter that is an object of options. The available options are:
 
 Option | Default | Description
-- | - | -
+-- | -- | --
 rejectOnErrors | true | If there are errors in the tap output, reject the promise
 capabilities | | An object of [SauceLabs capabilities](https://github.com/SeleniumHQ/selenium/wiki/DesiredCapabilities)
 sauce | | The SauceLabs `user` and `key` values, as an object (`{ user: '...', key: '...' }`); can also be set using `SAUCE_USER` and `SAUCE_KEY` environment variables
@@ -52,7 +52,7 @@ sauce | | The SauceLabs `user` and `key` values, as an object (`{ user: '...', k
 The `results` object can be used to check the results of the test run.
 
 Property | Description
-- | -
+-- | --
 results.output | Full tap output produced by `src`
 results.tests | Number of tests executed
 results.passed | Number of tests that passed
@@ -64,7 +64,7 @@ This library uses [simple-tap-parser](https://www.npmjs.com/package/simple-tap-p
 The objects inside the `results.errors` array have the following properties:
 
 Property | Description
-- | -
+-- | --
 line | The failing line's summary
 details | The entire failure message
 
