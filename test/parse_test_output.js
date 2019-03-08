@@ -15,9 +15,11 @@ const specs = {
     fail: 0,
   },
   'internet explorer': {
-    rejects: true,
+    rejects: /Object.+assign/,
   },
 };
+
+const failedReject = 'expected to reject, but passed';
 
 Object.keys(specs)
   .reduce(
@@ -26,26 +28,39 @@ Object.keys(specs)
         const spec = specs[browser];
         const caps = { browserName: browser };
 
+        console.log(`>> Running tests in '${browser}'`);
         return gravyTap(src, { capabilities: caps })
           .then(results => {
             // throw is rejection was expected
-            if (spec.rejects) throw new Error('Runner was expected to reject');
+            if (spec.rejects) throw failedReject;
 
             assert.strictEqual(results.tests, spec.total, `${spec.total} total tests`);
             assert.strictEqual(results.passed, spec.pass, `${spec.pass} tests pass`);
             assert.strictEqual(results.failed, spec.fail, `${spec.fail} tests fail`);
-            console.log(`${browser} - assertions passed`);
+            console.log(`>> PASSED ${browser} assertions`);
           })
           .catch(err => {
-            // swallow rejection is it's expected
+            // if there was a reject from gravy-tap, re-throw it
             if (!spec.rejects) throw err;
-            console.log(`${browser} - assertions passed`);
+
+            // if reject was due to unexpected pass, throw error
+            if (err === failedReject) {
+              console.log(`>> FAILED ${browser} ${failedReject}`);
+              throw new Error(failedReject);
+            }
+
+            // check reject message, throw new error if it does not match
+            if (spec.rejects.test(err.message)) {
+              console.log(`>> PASSED ${browser} rejected with expected error`);
+            } else {
+              console.log(`>> FAILED ${browser} rejected with wrong message`);
+              throw err;
+            }
           });
       }),
     Promise.resolve()
   )
   .catch(err => {
-    console.log('Output assertions failed');
     console.error(err);
     process.exit(1);
   });
