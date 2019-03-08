@@ -1,4 +1,10 @@
 /* eslint no-console: 0 */
+
+/*
+  This set of tests just logs TAP output in sauce and ensures
+  it is parsed correctly
+*/
+
 const assert = require('assert');
 const gravyTap = require('..');
 

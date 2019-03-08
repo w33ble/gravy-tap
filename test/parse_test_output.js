@@ -1,4 +1,10 @@
 /* eslint no-console: 0 */
+
+/*
+  This set of tests runs a real test bundle and checks that the tests
+  pass (or fail) correctly
+*/
+
 const fs = require('fs');
 const path = require('path');
 const assert = require('assert');
