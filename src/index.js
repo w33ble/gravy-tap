@@ -85,7 +85,10 @@ function gravyTap(src, options = {}) {
       return runner.close().then(() => stats);
     })
     .catch(err => {
-      runner.close();
+      try {
+        // sometimes the close call can throw, but we don't care...
+        runner.close();
+      } catch (e) {} // eslint-disable-line no-empty
       throw err;
     });
 }
